@@ -15,7 +15,7 @@ function App() {
   const [round, setRound] = useState(1);
   const [usedObjects, setUsedObjects] = useState([]);
   const [currentObject, setCurrentObject] = useState('');
-  const [timeLeft, setTimeLeft] = useState(5); // Reduced to 5 seconds
+  const [timeLeft, setTimeLeft] = useState(10); // Changed to 10 seconds
   const [score, setScore] = useState(0);
   const [roundsWon, setRoundsWon] = useState(0);
   const [drawing, setDrawing] = useState(null);
@@ -70,7 +70,7 @@ function App() {
     setRound(1);
     setScore(0);
     setRoundsWon(0);
-    setTimeLeft(5);
+    setTimeLeft(10);
     setScreen('drawing');
     setError(null);
     submittedRef.current = false;
@@ -85,7 +85,7 @@ function App() {
 
   const startTimer = () => {
     if (timerRef.current) clearInterval(timerRef.current);
-    setTimeLeft(5); // 5 seconds high-speed countdown
+    setTimeLeft(10); // 10 seconds countdown
     timerRef.current = setInterval(() => {
       setTimeLeft((prev) => {
         if (prev <= 1) {
@@ -107,6 +107,7 @@ function App() {
         const ctx = canvas.getContext('2d');
         ctx.fillStyle = 'white';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
+        isDrawingRef.current = false;
       }
     }, 50);
   };
@@ -267,7 +268,7 @@ function App() {
       setCurrentObject(obj);
       setUsedObjects((prev) => [...prev, obj]);
       setRound((prev) => prev + 1);
-      setTimeLeft(5);
+      setTimeLeft(10);
       setError(null);
       submittedRef.current = false;
       setScreen('drawing');
@@ -297,7 +298,7 @@ function App() {
               <p className="tagline">Have Fun • Draw • Let AI Code-Guess • Win! 🏆</p>
               <p className="subtitle">Think your drawing compiles successfully? 🤖</p>
               <p className="description">
-                Draw the object before the <strong>5-second</strong> sprint timer runs out and pass strict code review!
+                Draw the object before the <strong>10-second</strong> sprint timer runs out and pass strict code review!
               </p>
               <button className="btn-primary" onClick={startGame}>
                 🚀 START PLAYING
