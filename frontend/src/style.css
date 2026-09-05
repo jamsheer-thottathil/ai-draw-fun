@@ -111,15 +111,15 @@ body {
 /* BUTTONS */
 .btn-primary,
 .btn-secondary {
-  padding: 14px 40px;
-  font-size: 1.1rem;
+  padding: 10px 30px;
+  font-size: 0.95rem;
   font-weight: 600;
   border: none;
-  border-radius: 12px;
+  border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
 }
 
 .btn-primary {
@@ -263,10 +263,10 @@ body {
 .result {
   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
   flex-direction: column;
-  justify-content: flex-start;
-  overflow-y: auto;
+  justify-content: center;
+  overflow: hidden;
   position: relative;
-  padding: 20px 10px;
+  padding: 5px 5px;
 }
 
 .confetti {
@@ -293,22 +293,27 @@ body {
   width: 100%;
   animation: slideIn 0.5s ease-out;
   margin: 0 auto;
+  padding: 0 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .result-title-win,
 .result-title-loss {
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   color: white;
-  margin-bottom: 25px;
+  margin-bottom: 6px;
+  margin-top: 0;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .result-box {
   background: rgba(26, 26, 46, 0.9);
-  border-radius: 20px;
-  padding: 30px;
-  margin-bottom: 25px;
+  border-radius: 12px;
+  padding: 10px 12px;
+  margin-bottom: 6px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
   color: #e0e0e0;
   border: 2px solid rgba(102, 126, 234, 0.3);
@@ -317,60 +322,67 @@ body {
 .result-target,
 .result-guess {
   text-align: center;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: #b0bec5;
-  margin-bottom: 20px;
+  margin-bottom: 6px;
+  margin-top: 0;
   font-weight: 600;
 }
 
 .big-text {
   display: block;
-  font-size: 1.8rem;
+  font-size: 1.1rem;
   color: #64b5f6;
   font-weight: 700;
-  margin-top: 8px;
+  margin-top: 3px;
+  margin-bottom: 0;
 }
 
 .result-drawing {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 6px;
+  margin-top: 0;
 }
 
 .result-drawing img {
   max-width: 100%;
   border: 3px solid #667eea;
   border-radius: 10px;
-  max-height: 250px;
+  max-height: 140px;
 }
 
 .confidence {
-  font-size: 1.1rem;
+  font-size: 0.8rem;
   color: #81c784;
   font-weight: 700;
-  margin-top: 10px;
+  margin-top: 3px;
+  margin-bottom: 0;
 }
 
 .result-message {
   text-align: center;
   color: #e0e0e0;
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   font-weight: 600;
-  margin-bottom: 20px;
+  margin-bottom: 6px;
+  margin-top: 0;
   background: rgba(102, 126, 234, 0.15);
-  padding: 20px;
-  border-radius: 15px;
+  padding: 8px 10px;
+  border-radius: 10px;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(102, 126, 234, 0.3);
+  line-height: 1.3;
 }
 
 .score-box {
   text-align: center;
   color: #e0e0e0;
-  font-size: 1.3rem;
+  font-size: 1rem;
   font-weight: 700;
-  padding: 15px;
-  margin-bottom: 25px;
-  border-radius: 10px;
+  padding: 7px;
+  margin-bottom: 6px;
+  margin-top: 0;
+  border-radius: 8px;
   background: rgba(102, 126, 234, 0.15);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(102, 126, 234, 0.3);
@@ -525,11 +537,29 @@ body {
 
   .result-title-win,
   .result-title-loss {
-    font-size: 2rem;
+    font-size: 1.5rem;
+    margin-bottom: 8px;
   }
 
   .result-message {
-    font-size: 1rem;
+    font-size: 0.9rem;
+    padding: 8px 10px;
+    margin-bottom: 8px;
+  }
+
+  .result-box {
+    padding: 12px 15px;
+    margin-bottom: 8px;
+  }
+
+  .big-text {
+    font-size: 1.1rem;
+  }
+
+  .score-box {
+    font-size: 0.95rem;
+    padding: 8px;
+    margin-bottom: 8px;
   }
 }
 
@@ -576,15 +606,33 @@ body {
   }
 
   .result-drawing img {
-    max-height: 200px;
+    max-height: 150px;
+  }
+
+  .result-message {
+    font-size: 0.8rem;
+    padding: 6px 10px;
+  }
+
+  .result-box {
+    padding: 10px 12px;
+  }
+
+  .big-text {
+    font-size: 1rem;
   }
 
   .stat-value {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 
   .final-content h1 {
-    font-size: 2rem;
+    font-size: 1.7rem;
+  }
+
+  .score-box {
+    font-size: 0.85rem;
+    padding: 6px;
   }
 }
 

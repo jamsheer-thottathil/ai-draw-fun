@@ -86,6 +86,7 @@ function App() {
   const startTimer = () => {
     if (timerRef.current) clearInterval(timerRef.current);
     setTimeLeft(10); // 10 seconds countdown
+    playTickSound(); // Play tick sound when countdown begins
     timerRef.current = setInterval(() => {
       setTimeLeft((prev) => {
         if (prev <= 1) {
