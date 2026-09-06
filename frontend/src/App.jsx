@@ -32,29 +32,30 @@ function App() {
   const playTickSound = () => {
     try {
       const ctx = new (window.AudioContext || window.webkitAudioContext)();
-      // First beep - high pitch
+      // Classic clock tick-tock sound
+      // First tick - lower frequency click
       const osc1 = ctx.createOscillator();
       const gain1 = ctx.createGain();
       osc1.type = 'sine';
-      osc1.frequency.setValueAtTime(1200, ctx.currentTime);
+      osc1.frequency.setValueAtTime(600, ctx.currentTime);
       gain1.gain.setValueAtTime(0.2, ctx.currentTime);
-      gain1.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.06);
+      gain1.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.04);
       osc1.connect(gain1);
       gain1.connect(ctx.destination);
       osc1.start();
-      osc1.stop(ctx.currentTime + 0.06);
+      osc1.stop(ctx.currentTime + 0.04);
 
-      // Second beep - even higher pitch for clock effect
+      // Second tick - higher frequency (tock)
       const osc2 = ctx.createOscillator();
       const gain2 = ctx.createGain();
       osc2.type = 'sine';
-      osc2.frequency.setValueAtTime(1600, ctx.currentTime + 0.08);
-      gain2.gain.setValueAtTime(0.18, ctx.currentTime + 0.08);
-      gain2.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.13);
+      osc2.frequency.setValueAtTime(1000, ctx.currentTime + 0.05);
+      gain2.gain.setValueAtTime(0.22, ctx.currentTime + 0.05);
+      gain2.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.09);
       osc2.connect(gain2);
       gain2.connect(ctx.destination);
-      osc2.start(ctx.currentTime + 0.08);
-      osc2.stop(ctx.currentTime + 0.13);
+      osc2.start(ctx.currentTime + 0.05);
+      osc2.stop(ctx.currentTime + 0.09);
     } catch (e) {
       // Ignore audio context blocks prior to user interaction
     }
@@ -444,12 +445,18 @@ function App() {
 
             <p className="final-message">
               {score > 700
-                ? '🌟 Senior Full-Stack AI Whisperer! Outstanding architecture!'
+                ? '🚀 YOU ARE A 10X ENGINEER! Your code probably has its own GitHub following! Even Stack Overflow bots fear you! 🤖'
                 : score > 500
-                  ? '👏 Great job! Solid code contributions!'
+                  ? '🎯 PRETTY DARN GOOD! You\'re like a coding ninja, but one that trips occasionally! Still legendary though! 🥷'
                   : score > 300
-                    ? '😊 Decent effort! Needs some code refactoring!'
-                    : '🎨 Syntax error everywhere! Back to junior bootcamp!'}
+                    ? '😅 MEDIOCRE MASTERPIECE! Your code works... sometimes! It\'s like a Ferrari with square wheels - stylish but questionable! 🏎️'
+                    : '💀 ABSOLUTE CHAOS! Your code didn\'t just fail - it achieved sentience and filed a complaint! RIP your laptop! 🪦'}
+            </p>
+
+            <p className={`winner-message ${accuracy >= 60 ? 'winner' : 'loser'}`}>
+              {accuracy >= 60
+                ? '🏅 YOU ARE A WINNER! Congratulations! 🎉'
+                : '💪 BETTER LUCK NEXT TIME! Keep practicing! 🚀'}
             </p>
 
             <button className="btn-primary" onClick={startGame}>

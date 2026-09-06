@@ -472,7 +472,7 @@ body {
 
 .final-message {
   font-size: 1.1rem;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   color: #e0e0e0;
   background: rgba(102, 126, 234, 0.15);
   padding: 20px;
@@ -480,6 +480,29 @@ body {
   backdrop-filter: blur(10px);
   border: 1px solid rgba(102, 126, 234, 0.3);
   line-height: 1.6;
+}
+
+.winner-message {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+  padding: 15px 20px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  line-height: 1.5;
+  text-align: center;
+}
+
+.winner-message.winner {
+  color: #4ade80;
+  background: rgba(74, 222, 128, 0.2);
+  border: 2px solid rgba(74, 222, 128, 0.5);
+}
+
+.winner-message.loser {
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.2);
+  border: 2px solid rgba(251, 191, 36, 0.5);
 }
 
 /* RESPONSIVE */
