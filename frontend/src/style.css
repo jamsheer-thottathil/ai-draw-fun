@@ -151,28 +151,34 @@ body {
 
 .button-group {
   display: flex;
-  gap: 8px;
+  gap: 5px;
   justify-content: center;
-  margin-top: 5px;
+  margin-top: 3px;
   width: 100%;
+  max-width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .button-group .btn-secondary,
 .button-group .btn-primary {
   flex: 1;
-  max-width: 140px;
-  padding: 8px 16px;
-  font-size: 0.85rem;
+  max-width: 120px;
+  padding: 7px 12px;
+  font-size: 0.75rem;
 }
 
 /* DRAWING SCREEN */
 .drawing {
   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   overflow: hidden;
+  overflow-y: auto;
   padding: 5px;
-  gap: 3px;
+  gap: 2px;
+  padding-top: 3px;
+  padding-bottom: 3px;
 }
 
 .drawing-header {
@@ -180,83 +186,91 @@ body {
   justify-content: space-between;
   width: 100%;
   max-width: 500px;
-  padding: 5px 10px;
+  padding: 3px 8px;
   color: white;
-  font-size: 1rem;
+  font-size: 0.85rem;
   font-weight: 600;
-  margin-bottom: 5px;
+  margin-bottom: 2px;
+  margin: 0 auto;
 }
 
 .round-info,
 .timer {
   background: rgba(102, 126, 234, 0.2);
-  padding: 5px 12px;
-  border-radius: 8px;
+  padding: 3px 8px;
+  border-radius: 6px;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(102, 126, 234, 0.4);
-  font-size: 0.9rem;
+  font-size: 0.75rem;
 }
 
 .timer {
   font-weight: 700;
-  min-width: 100px;
+  min-width: 80px;
   text-align: center;
 }
 
 .object-section {
   color: white;
-  margin-bottom: 5px;
+  margin-bottom: 3px;
   text-align: center;
 }
 
 .object-section h2 {
-  font-size: 0.75rem;
-  margin-bottom: 3px;
+  font-size: 0.65rem;
+  margin-bottom: 2px;
+  margin-top: 0;
   opacity: 0.9;
 }
 
 .object-display {
   background: rgba(102, 126, 234, 0.15);
-  padding: 5px;
-  border-radius: 8px;
+  padding: 3px 5px;
+  border-radius: 6px;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(102, 126, 234, 0.3);
 }
 
 .emoji-large {
-  font-size: 1.5rem;
-  margin-bottom: 3px;
+  font-size: 1.2rem;
+  margin-bottom: 2px;
+  margin-top: 0;
 }
 
 .object-name {
-  font-size: 1rem;
+  font-size: 0.85rem;
   font-weight: 700;
 }
 
 .drawing-canvas {
-  border: 3px solid white;
-  border-radius: 10px;
+  border: 2px solid white;
+  border-radius: 8px;
   background: white;
   cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="4" fill="%23000"/></svg>') 8 8, auto;
-  width: 100%;
-  max-width: 500px;
-  height: 300px;
+  width: 90vw;
+  max-width: 450px;
+  height: auto;
+  aspect-ratio: 1 / 1;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  margin-bottom: 5px;
+  margin-bottom: 3px;
   touch-action: none;
   display: block;
+  margin: 0 auto 3px auto;
 }
 
 .error-message {
   color: #ff6b6b;
   background: rgba(255, 107, 107, 0.15);
-  padding: 6px 12px;
+  padding: 4px 8px;
   border-radius: 6px;
   font-weight: 600;
-  font-size: 0.8rem;
-  margin-bottom: 3px;
+  font-size: 0.7rem;
+  margin-bottom: 2px;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 107, 107, 0.3);
+  text-align: center;
+  margin: 0 auto 2px auto;
+  max-width: 90vw;
 }
 
 /* RESULT SCREEN */
@@ -491,25 +505,37 @@ body {
   }
 
   .drawing-header {
-    padding: 15px 10px;
-    font-size: 1.1rem;
+    padding: 5px 8px;
+    font-size: 0.8rem;
+    margin-bottom: 2px;
   }
 
   .drawing-canvas {
-    max-width: 100%;
-    border-width: 3px;
+    max-width: 90vw;
+    border-width: 2px;
+    height: auto;
+    aspect-ratio: 1 / 1;
   }
 
   .object-display {
-    padding: 10px;
+    padding: 4px;
   }
 
   .emoji-large {
-    font-size: 2.5rem;
+    font-size: 1.2rem;
   }
 
   .object-name {
-    font-size: 1.2rem;
+    font-size: 0.85rem;
+  }
+
+  .timer {
+    min-width: 70px;
+    font-size: 0.75rem;
+  }
+
+  .round-info {
+    font-size: 0.75rem;
   }
 
   .result-box {
@@ -591,18 +617,53 @@ body {
   }
 
   .drawing-canvas {
-    width: 90vw;
-    height: 90vw;
-    max-width: 400px;
-    max-height: 400px;
+    width: 85vw;
+    max-width: 350px;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    border-width: 2px;
+    margin: 0 auto 3px auto;
+  }
+
+  .drawing-header {
+    padding: 3px 6px;
+    font-size: 0.7rem;
+    margin-bottom: 2px;
   }
 
   .emoji-large {
-    font-size: 2rem;
+    font-size: 1rem;
   }
 
   .object-name {
-    font-size: 1rem;
+    font-size: 0.75rem;
+  }
+
+  .object-display {
+    padding: 2px 4px;
+  }
+
+  .timer {
+    min-width: 60px;
+    padding: 2px 6px;
+    font-size: 0.65rem;
+  }
+
+  .round-info {
+    font-size: 0.65rem;
+    padding: 2px 6px;
+  }
+
+  .button-group {
+    gap: 4px;
+    margin-top: 2px;
+  }
+
+  .button-group .btn-primary,
+  .button-group .btn-secondary {
+    padding: 6px 10px;
+    font-size: 0.65rem;
+    max-width: 100px;
   }
 
   .result-drawing img {
