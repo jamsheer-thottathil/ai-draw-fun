@@ -34,14 +34,14 @@ function App() {
       const ctx = new (window.AudioContext || window.webkitAudioContext)();
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(700, ctx.currentTime);
-      gain.gain.setValueAtTime(0.08, ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.05);
+      osc.type = 'square';
+      osc.frequency.setValueAtTime(800, ctx.currentTime);
+      gain.gain.setValueAtTime(0.15, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.08);
       osc.connect(gain);
       gain.connect(ctx.destination);
       osc.start();
-      osc.stop(ctx.currentTime + 0.05);
+      osc.stop(ctx.currentTime + 0.08);
     } catch (e) {
       // Ignore audio context blocks prior to user interaction
     }
@@ -264,7 +264,7 @@ function App() {
   };
 
   const nextRound = () => {
-    if (round < 5) {
+    if (round < 3) {
       const obj = getRandomObject(usedObjects);
       setCurrentObject(obj);
       setUsedObjects((prev) => [...prev, obj]);
@@ -313,7 +313,7 @@ function App() {
       {screen === 'drawing' && currentObject && (
         <div className="screen drawing">
           <div className="drawing-header">
-            <div className="round-info">Round {round}/5</div>
+            <div className="round-info">Round {round}/3</div>
             {/* Big prominent timer display */}
             <div className="timer-big" style={{ color: timeLeft <= 2 ? '#ff4444' : '#fff' }}>
               ⏱ 0:0{timeLeft}
@@ -400,7 +400,7 @@ function App() {
             </div>
 
             <button className="btn-primary" onClick={nextRound}>
-              {round < 5 ? '➡️ NEXT CHALLENGE' : '🏆 SEE FINAL SCORE'}
+              {round < 3 ? '➡️ NEXT CHALLENGE' : '🏆 SEE FINAL SCORE'}
             </button>
           </div>
         </div>
@@ -420,7 +420,7 @@ function App() {
               <div className="stat-box">
                 <div className="stat-label">ROUNDS WON</div>
                 <div className="stat-value">
-                  {roundsWon} / 5
+                  {roundsWon} / 3
                 </div>
               </div>
               <div className="stat-box">
