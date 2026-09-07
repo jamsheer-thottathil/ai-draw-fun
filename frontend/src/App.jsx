@@ -453,8 +453,8 @@ function App() {
                     : '💥 CATASTROPHICALLY HILARIOUS! Your code didn\'t fail - it achieved ENLIGHTENMENT and decided to reject your reality! Stack Overflow just flagged you as a "special case"! Your IDE sent flowers (as a breakup gift)! Even Skynet is like "Nope, that\'s too broken!" 🤖💔'}
             </p>
 
-            <p className={`winner-message ${accuracy >= 60 ? 'winner' : 'loser'}`}>
-              {accuracy >= 60
+            <p className={`winner-message ${accuracy >= 80 ? 'winner' : 'loser'}`}>
+              {accuracy >= 80
                 ? '🏅 YOU ARE A WINNER! Congratulations! 🎉'
                 : '💪 BETTER LUCK NEXT TIME! Keep practicing! 🚀'}
             </p>
