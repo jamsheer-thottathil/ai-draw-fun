@@ -15,7 +15,7 @@ function App() {
   const [round, setRound] = useState(1);
   const [usedObjects, setUsedObjects] = useState([]);
   const [currentObject, setCurrentObject] = useState('');
-  const [timeLeft, setTimeLeft] = useState(10); // Changed to 10 seconds
+  const [timeLeft, setTimeLeft] = useState(7); // 7 seconds countdown
   const [score, setScore] = useState(0);
   const [roundsWon, setRoundsWon] = useState(0);
   const [drawing, setDrawing] = useState(null);
@@ -32,16 +32,30 @@ function App() {
   const playTickSound = () => {
     try {
       const ctx = new (window.AudioContext || window.webkitAudioContext)();
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(700, ctx.currentTime);
-      gain.gain.setValueAtTime(0.08, ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.05);
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-      osc.start();
-      osc.stop(ctx.currentTime + 0.05);
+      // Classic clock tick-tock sound
+      // First tick - lower frequency click
+      const osc1 = ctx.createOscillator();
+      const gain1 = ctx.createGain();
+      osc1.type = 'sine';
+      osc1.frequency.setValueAtTime(600, ctx.currentTime);
+      gain1.gain.setValueAtTime(0.2, ctx.currentTime);
+      gain1.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.04);
+      osc1.connect(gain1);
+      gain1.connect(ctx.destination);
+      osc1.start();
+      osc1.stop(ctx.currentTime + 0.04);
+
+      // Second tick - higher frequency (tock)
+      const osc2 = ctx.createOscillator();
+      const gain2 = ctx.createGain();
+      osc2.type = 'sine';
+      osc2.frequency.setValueAtTime(1000, ctx.currentTime + 0.05);
+      gain2.gain.setValueAtTime(0.22, ctx.currentTime + 0.05);
+      gain2.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.09);
+      osc2.connect(gain2);
+      gain2.connect(ctx.destination);
+      osc2.start(ctx.currentTime + 0.05);
+      osc2.stop(ctx.currentTime + 0.09);
     } catch (e) {
       // Ignore audio context blocks prior to user interaction
     }
@@ -85,7 +99,7 @@ function App() {
 
   const startTimer = () => {
     if (timerRef.current) clearInterval(timerRef.current);
-    setTimeLeft(10); // 10 seconds countdown
+    setTimeLeft(7); // 7 seconds countdown
     playTickSound(); // Play tick sound when countdown begins
     timerRef.current = setInterval(() => {
       setTimeLeft((prev) => {
@@ -264,12 +278,12 @@ function App() {
   };
 
   const nextRound = () => {
-    if (round < 5) {
+    if (round < 3) {
       const obj = getRandomObject(usedObjects);
       setCurrentObject(obj);
       setUsedObjects((prev) => [...prev, obj]);
       setRound((prev) => prev + 1);
-      setTimeLeft(10);
+      setTimeLeft(7);
       setError(null);
       submittedRef.current = false;
       setScreen('drawing');
@@ -299,7 +313,7 @@ function App() {
               <p className="tagline">Have Fun • Draw • Let AI Code-Guess • Win! 🏆</p>
               <p className="subtitle">Think your drawing compiles successfully? 🤖</p>
               <p className="description">
-                Draw the object before the <strong>10-second</strong> sprint timer runs out and pass strict code review!
+                Draw the object before the <strong>7-second</strong> sprint timer runs out and pass strict code review!
               </p>
               <button className="btn-primary" onClick={startGame}>
                 🚀 START PLAYING
@@ -313,7 +327,7 @@ function App() {
       {screen === 'drawing' && currentObject && (
         <div className="screen drawing">
           <div className="drawing-header">
-            <div className="round-info">Round {round}/5</div>
+            <div className="round-info">Round {round}/3</div>
             {/* Big prominent timer display */}
             <div className="timer-big" style={{ color: timeLeft <= 2 ? '#ff4444' : '#fff' }}>
               ⏱ 0:0{timeLeft}
@@ -400,7 +414,7 @@ function App() {
             </div>
 
             <button className="btn-primary" onClick={nextRound}>
-              {round < 5 ? '➡️ NEXT CHALLENGE' : '🏆 SEE FINAL SCORE'}
+              {round < 3 ? '➡️ NEXT CHALLENGE' : '🏆 SEE FINAL SCORE'}
             </button>
           </div>
         </div>
@@ -420,7 +434,7 @@ function App() {
               <div className="stat-box">
                 <div className="stat-label">ROUNDS WON</div>
                 <div className="stat-value">
-                  {roundsWon} / 5
+                  {roundsWon} / 3
                 </div>
               </div>
               <div className="stat-box">
@@ -431,12 +445,18 @@ function App() {
 
             <p className="final-message">
               {score > 700
-                ? '🌟 Senior Full-Stack AI Whisperer! Outstanding architecture!'
+                ? '🚀 LEGEND STATUS UNLOCKED! Your code is so good, even Elon Musk wants to hire you! NASA called - they want to use your algorithm to land on Mars! You broke the internet AND fixed it before anyone noticed! 🌟'
                 : score > 500
-                  ? '👏 Great job! Solid code contributions!'
+                  ? '🎯 PRETTY AWESOME! Your code is like a plot twist in a Netflix series - unexpected but somehow it works! Even your cat is impressed! Your rubber duck is requesting a raise! 🦆'
                   : score > 300
-                    ? '😊 Decent effort! Needs some code refactoring!'
-                    : '🎨 Syntax error everywhere! Back to junior bootcamp!'}
+                    ? '😅 HILARIOUSLY MEDIOCRE! Your code is like a dad joke - nobody understands it but somehow it\'s endearing! You\'ve achieved the perfect balance between genius and chaos! Your keyboard is now requiring therapy! 🎹'
+                    : '💥 CATASTROPHICALLY HILARIOUS! Your code didn\'t fail - it achieved ENLIGHTENMENT and decided to reject your reality! Stack Overflow just flagged you as a "special case"! Your IDE sent flowers (as a breakup gift)! Even Skynet is like "Nope, that\'s too broken!" 🤖💔'}
+            </p>
+
+            <p className={`winner-message ${accuracy >= 80 ? 'winner' : 'loser'}`}>
+              {accuracy >= 80
+                ? '🏅 YOU ARE A WINNER! Congratulations! 🎉'
+                : '💪 BETTER LUCK NEXT TIME! Keep practicing! 🚀'}
             </p>
 
             <button className="btn-primary" onClick={startGame}>
