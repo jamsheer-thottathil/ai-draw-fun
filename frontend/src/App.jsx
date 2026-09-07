@@ -445,12 +445,12 @@ function App() {
 
             <p className="final-message">
               {score > 700
-                ? '🚀 YOU ARE A 10X ENGINEER! Your code probably has its own GitHub following! Even Stack Overflow bots fear you! 🤖'
+                ? '🚀 LEGEND STATUS UNLOCKED! Your code is so good, even Elon Musk wants to hire you! NASA called - they want to use your algorithm to land on Mars! You broke the internet AND fixed it before anyone noticed! 🌟'
                 : score > 500
-                  ? '🎯 PRETTY DARN GOOD! You\'re like a coding ninja, but one that trips occasionally! Still legendary though! 🥷'
+                  ? '🎯 PRETTY AWESOME! Your code is like a plot twist in a Netflix series - unexpected but somehow it works! Even your cat is impressed! Your rubber duck is requesting a raise! 🦆'
                   : score > 300
-                    ? '😅 MEDIOCRE MASTERPIECE! Your code works... sometimes! It\'s like a Ferrari with square wheels - stylish but questionable! 🏎️'
-                    : '💀 ABSOLUTE CHAOS! Your code didn\'t just fail - it achieved sentience and filed a complaint! RIP your laptop! 🪦'}
+                    ? '😅 HILARIOUSLY MEDIOCRE! Your code is like a dad joke - nobody understands it but somehow it\'s endearing! You\'ve achieved the perfect balance between genius and chaos! Your keyboard is now requiring therapy! 🎹'
+                    : '💥 CATASTROPHICALLY HILARIOUS! Your code didn\'t fail - it achieved ENLIGHTENMENT and decided to reject your reality! Stack Overflow just flagged you as a "special case"! Your IDE sent flowers (as a breakup gift)! Even Skynet is like "Nope, that\'s too broken!" 🤖💔'}
             </p>
 
             <p className={`winner-message ${accuracy >= 60 ? 'winner' : 'loser'}`}>
