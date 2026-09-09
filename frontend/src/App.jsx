@@ -15,7 +15,7 @@ function App() {
   const [round, setRound] = useState(1);
   const [usedObjects, setUsedObjects] = useState([]);
   const [currentObject, setCurrentObject] = useState('');
-  const [timeLeft, setTimeLeft] = useState(7); // 7 seconds countdown
+  const [timeLeft, setTimeLeft] = useState(12); // 12 seconds countdown
   const [score, setScore] = useState(0);
   const [roundsWon, setRoundsWon] = useState(0);
   const [drawing, setDrawing] = useState(null);
@@ -99,7 +99,7 @@ function App() {
 
   const startTimer = () => {
     if (timerRef.current) clearInterval(timerRef.current);
-    setTimeLeft(7); // 7 seconds countdown
+    setTimeLeft(12); // 12 seconds countdown
     playTickSound(); // Play tick sound when countdown begins
     timerRef.current = setInterval(() => {
       setTimeLeft((prev) => {
@@ -283,7 +283,7 @@ function App() {
       setCurrentObject(obj);
       setUsedObjects((prev) => [...prev, obj]);
       setRound((prev) => prev + 1);
-      setTimeLeft(7);
+      setTimeLeft(12);
       setError(null);
       submittedRef.current = false;
       setScreen('drawing');
@@ -313,7 +313,7 @@ function App() {
               <p className="tagline">Have Fun • Draw • Let AI Code-Guess • Win! 🏆</p>
               <p className="subtitle">Think your drawing compiles successfully? 🤖</p>
               <p className="description">
-                Draw the object before the <strong>7-second</strong> sprint timer runs out and pass strict code review!
+                Draw the object before the <strong>12-second</strong> sprint timer runs out and pass strict code review!
               </p>
               <button className="btn-primary" onClick={startGame}>
                 🚀 START PLAYING
